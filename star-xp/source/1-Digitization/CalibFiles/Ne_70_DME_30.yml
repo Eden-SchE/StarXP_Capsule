@@ -1,0 +1,7 @@
+InitialIonizationEnergy: 20.
+DDriftSpeed: 2900000.
+DDriftSpeedErr: 1.
+DDriftSmear: 0.02066865
+IDriftSpeed: 6800000.
+IDriftSpeedErr: 1.
+IDriftSmear: 0.02131691

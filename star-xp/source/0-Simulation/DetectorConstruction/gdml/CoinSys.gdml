@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!-- 
+       CoinSys.gdml
+    包含: 一般材料的定义
+    包含: 
+    包含: Region的定义及cut
+    包含: 探测器的颜色显示控制
+-->
+
+<!DOCTYPE gdml [
+    <!ENTITY Element SYSTEM "./Material/Predefined/Element.xml">
+    <!ENTITY GasMixture SYSTEM "./Material/Predefined/GasMixture/lists/GasMixture.xml">
+    <!ENTITY Materials SYSTEM "./Material/Material.xml">
+]>
+
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+    <!--materials-->
+	&Element;
+	&GasMixture;
+    &Materials;
+    <define>
+        <variable name="CollKovarX" value="10" />
+        <variable name="CollKovarY" value="0" />
+        <variable name="CoincidenceHz" value="10" />
+        <variable name="Collimation_R" value="5" />
+        <variable name="Be_H" value="0.1" />
+    </define>
+
+    <solids>
+        <box lunit="mm" name="WorldBox" x="10000" y="10000" z="10000" />
+        <box lunit="mm" name="CoincidenceBox1" x="160" y="160" z="CoincidenceHz" />
+        <box lunit="mm" name="CoincidenceBox2" x="160" y="160" z="CoincidenceHz" />
+        <tube lunit="mm" name="CollimationTube1" rmin="0" rmax="Collimation_R" z="55+2*CoincidenceHz" aunit="deg" startphi="0" deltaphi="360" />
+        <tube lunit="mm" name="CollimationTube2" rmin="0" rmax="Collimation_R" z="55+2*CoincidenceHz" aunit="deg" startphi="0" deltaphi="360" />
+        <tube lunit="mm" name="WindowTube1" rmin="0" rmax="Collimation_R" z="Be_H" aunit="deg" startphi="0" deltaphi="360" />
+        <tube lunit="mm" name="WindowTube2" rmin="0" rmax="Collimation_R" z="Be_H" aunit="deg" startphi="0" deltaphi="360" />
+        <box lunit="mm" name="ShieldBox" x="120" y="120" z="120" />
+        <tube lunit="mm" name="CollimationKovarTube1" rmin="0" rmax="Collimation_R+1" z="54.9" aunit="deg" startphi="0" deltaphi="360" />
+        <tube lunit="mm" name="CollimationKovarTube2" rmin="0" rmax="Collimation_R+1" z="54.9" aunit="deg" startphi="0" deltaphi="360" />
+        <box lunit="mm" name="InnerBox" x="100" y="100" z="100" />
+        <box lunit="mm" name="KovarBox1" x="70" y="70" z="2" />
+        <box lunit="mm" name="CeramiscBox" x="70" y="70" z="10" />
+        <box lunit="mm" name="GasBox" x="58" y="58" z="10" />
+        <box lunit="mm" name="KovarBox2" x="70" y="70" z="2.5" />
+    </solids>
+
+    <structure>
+
+		  <volume name="CoincidenceBox1Val">
+			<materialref ref="C8H8" />
+			<solidref ref="CoincidenceBox1" />
+		  </volume>
+
+		  <volume name="CoincidenceBox2Val">
+			<materialref ref="C8H8" />
+			<solidref ref="CoincidenceBox2" />
+		  </volume>
+
+
+		  <volume name="KovarBox1Val">
+			<materialref ref="Kovar" />
+			<solidref ref="KovarBox1" />
+		  </volume>
+
+		  <volume name="KovarBox2Val">
+			<materialref ref="Kovar" />
+			<solidref ref="KovarBox2" />
+		  </volume>
+
+      <volume name="GasBoxVal">
+			<materialref ref="Ne50DME50" />
+			<solidref ref="GasBox" />
+		  </volume>
+
+		  <volume name="CollimationKovarTube1Val">
+			<materialref ref="Kovar" />
+			<solidref ref="CollimationKovarTube1" />
+		  </volume>
+
+		  <volume name="CollimationKovarTube2Val">
+			<materialref ref="Kovar" />
+			<solidref ref="CollimationKovarTube2" />
+		  </volume>
+
+		  <volume name="WindowTube1Val">
+			<materialref ref="G4_Be" />
+			<solidref ref="WindowTube1" />
+		  </volume>
+
+		  <volume name="WindowTube2Val">
+			<materialref ref="G4_Be" />
+			<solidref ref="WindowTube2" />
+		  </volume>
+
+		  <volume name="CollimationTube1Val">
+			<materialref ref="G4_Galactic" />
+			<solidref ref="CollimationTube1" />
+		    <physvol>
+			  <volumeref ref="WindowTube1Val" />
+				<position x="0." y="0." z="Be_H*0.5-(55+2*CoincidenceHz)*0.5" unit="mm" />
+				<rotation x="0." y="0." z="0." unit="deg" />
+			  </physvol>
+		  </volume>
+
+		  <volume name="CollimationTube2Val">
+			<materialref ref="G4_Galactic" />
+			<solidref ref="CollimationTube2" />
+		    <physvol>
+			  <volumeref ref="WindowTube2Val" />
+				<position x="0." y="0." z="Be_H*0.5-(55+2*CoincidenceHz)*0.5" unit="mm" />
+				<rotation x="0." y="0." z="0." unit="deg" />
+			  </physvol>
+		  </volume>
+
+		  <volume name="CeramiscBoxVal">
+			<materialref ref="Ceramics" />
+			<solidref ref="CeramiscBox" />
+		    <physvol>
+			  <volumeref ref="GasBoxVal" />
+				<position x="0." y="0." z="0." unit="mm" />
+				<rotation x="0." y="0." z="0." unit="deg" />
+			  </physvol>
+		  </volume>
+
+		  <volume name="InnerBoxVal">
+			<materialref ref="G4_Galactic" />
+			<solidref ref="InnerBox" />
+		    <physvol>
+			  <volumeref ref="KovarBox1Val" />
+				<position x="0." y="0." z="6." unit="mm" />
+				<rotation x="0." y="0." z="0." unit="deg" />
+			  </physvol>
+		    <physvol>
+			  <volumeref ref="CeramiscBoxVal" />
+				<position x="0." y="0." z="0." unit="mm" />
+				<rotation x="0." y="0." z="0." unit="deg" />
+			  </physvol>
+		    <physvol>
+			  <volumeref ref="KovarBox2Val" />
+				<position x="0." y="0." z="-6.25" unit="mm" />
+				<rotation x="0." y="0." z="0." unit="deg" />
+			  </physvol>
+		  </volume>
+
+		  <volume name="ShieldBoxVal">
+			<materialref ref="G4_Al" />
+			<solidref ref="ShieldBox" />
+		    <physvol>
+			  <volumeref ref="InnerBoxVal" />
+				<position x="0." y="0." z="0." unit="mm" />
+				<rotation x="0." y="0." z="0." unit="deg" />
+			  </physvol>
+		    <physvol>
+			  <volumeref ref="CollimationKovarTube1Val" />
+				<position x="CollKovarX" y="CollKovarY" z="32.5" unit="mm" />
+				<rotation x="0." y="0." z="0." unit="deg" />
+			  </physvol>
+		    <physvol>
+			  <volumeref ref="CollimationKovarTube2Val" />
+				<position x="-CollKovarX" y="-CollKovarY" z="32.5" unit="mm" />
+				<rotation x="0." y="0." z="0." unit="deg" />
+			  </physvol>
+		  </volume>
+
+	    <volume name="World">
+			<materialref ref="G4_Galactic" />
+			<solidref ref="WorldBox" />	
+		    <physvol>
+			  <volumeref ref="CollimationTube1Val" />
+				<position x="CollKovarX" y="CollKovarY" z="5+(55+2*CoincidenceHz)*0.5" unit="mm" />
+				<rotation x="0." y="0." z="0." unit="deg" />
+			  </physvol>
+		    <physvol>
+			  <volumeref ref="CollimationTube2Val" />
+				<position x="-CollKovarX" y="-CollKovarY" z="5+(55+2*CoincidenceHz)*0.5" unit="mm" />
+				<rotation x="0." y="0." z="0." unit="deg" />
+			  </physvol>
+		    <physvol>
+			  <volumeref ref="CoincidenceBox1Val" />
+				<position x="0." y="0." z="60+CoincidenceHz*0.5" unit="mm" />
+				<rotation x="0." y="0." z="0." unit="deg" />
+			  </physvol>
+		    <physvol>
+			  <volumeref ref="CoincidenceBox2Val" />
+				<position x="0." y="0." z="60+CoincidenceHz*1.5" unit="mm" />
+				<rotation x="0." y="0." z="0." unit="deg" />
+			  </physvol>
+		    <physvol>
+			  <volumeref ref="ShieldBoxVal" />
+				<position x="0." y="0." z="0." unit="mm" />
+				<rotation x="0." y="0." z="0." unit="deg" />
+			  </physvol>
+  		</volume>
+
+    </structure>
+
+    <userinfo>
+        <!-- #RegCtrl 2. 在XML里定义Region的cut -->
+        <auxiliary auxtype="RegionCut" auxvalue="CsIRegion">
+            <auxiliary auxtype="gammaCut" auxvalue="0.1" auxunit="mm"/>
+            <auxiliary auxtype="e-Cut" auxvalue="0.1" auxunit="mm"/>
+            <auxiliary auxtype="e+Cut" auxvalue="0.1" auxunit="mm"/>
+            <auxiliary auxtype="protonCut" auxvalue="0.1" auxunit="mm"/>
+        </auxiliary>
+    </userinfo>
+
+    <setup name="Default" version="1.0">
+        <world ref="World" />
+    </setup>
+</gdml>

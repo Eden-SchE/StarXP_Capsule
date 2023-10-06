@@ -1,0 +1,40 @@
+#是否读取一个文件夹下所有UDP文件
+ReadFiles:1
+#读取单个文件时文件地址
+InputUTCFile:/public/data/LPD/Cubesat/22_026/UDP204.01
+#批量读取，读取目录下所有UTC文件
+InputUTCFileFolder:/public/data/LPD/Cubesat/22_026/
+#选择探测单元编号
+DETECTORID:1
+#Topmetal着火点数目最低阈值
+HITPIXEL: 16
+#Topmetal每帧总ADC最低阈值
+TOPMETALADCBOTTOM:1000
+#TopmetalSumADC最高阈值
+TOPMETALADCUPPER: 50000
+#单位换算
+EVENTTIME: 10000000
+#团簇算法时，每个团簇的最低着火点阈值
+THREPIXELADC: 20
+#GMCP最低阈值
+ThresholdGMCPADC:250
+#是否开启寻找光电径迹头部的特征，开启后特征提取会变慢
+IFFindIP:0
+GMCPCoincidence:1
+#是否开启能谱修正
+SpecFix:1
+#能谱修正需要的探测器的刻度文件
+DecayFile:./CalibFiles/decay.root
+#RawDat保存Topmetal输出的所有帧，不做GMCP时间戳符合和能谱修正
+RawDat:raw.dat
+#经GMCP时间戳符合事例的root文件
+EventRootFile:out.root
+#事例统计特征
+FeatureFile:Feature.root
+#data格式的输出，输出文件通过设置card内的参数决定有无能谱修正
+DatFile:test.data
+#直接将时间窗内有效图片拼接
+StraightADD:0
+WindowScale:2
+
+

@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+	<define>
+		<variable name="i" value="1"/>
+		<variable name="j" value="1"/>
+	</define>
+	<materials>
+		<element name="Hydrogen" formula="H" Z="1.">
+			<atom unit="g/mole" value="1.01"/>
+		</element>
+		<element name="Helium" formula="He" Z="2.">
+			<atom unit="g/mole" value="4.00"/>
+		</element>
+		<element name="Carbon" formula="C" Z="6.">
+			<atom unit="g/mole" value="12.01"/>
+		</element>
+		<element name="Nitrogen" formula="N" Z="7.">
+			<atom unit="g/mole" value="14.01"/>
+		</element>
+		<element name="Oxygen" formula="O" Z="8.">
+			<atom unit="g/mole" value="16.00"/>
+		</element>
+		<element name="Fluorine" formula="F" Z="9.">
+			<atom unit="g/mole" value="19.00"/>
+		</element>
+		<element name="Neon" formula="Ne" Z="10.">
+			<atom unit="g/mole" value="20.08"/>
+		</element>
+		<element name="Sodium" formula="Na" Z="11.">
+			<atom unit="g/mole" value="22.99"/>
+		</element>
+		<element name="Aluminum" formula="Al" Z="13.">
+			<atom unit="g/mole" value="26.98"/>
+		</element>
+		<element name="Silicon" formula="Si" Z="14.">
+			<atom unit="g/mole" value="28.09"/>
+		</element>
+		<element name="Phosphorus" formula="P" Z="15.">
+			<atom unit="g/mole" value="30.973762"/>
+		</element>
+		<element name="Sulfur" formula="S" Z="16.">
+			<atom unit="g/mole" value="32.066"/>
+		</element>
+		<element name="Argon" formula="Ar" Z="18.">
+			<atom unit="g/mole" value="39.95"/>
+		</element>
+		<element name="Potassium" formula="K" Z="19.">
+			<atom unit="g/mole" value="39.10"/>
+		</element>
+		<element name="calcium" formula="Ga" Z="20.">
+			<atom unit="g/mole" value="40.08"/>
+		</element>
+		<element name="Chrome" formula="Cr" Z="24.">
+			<atom unit="g/mole" value="51.996"/>
+		</element>
+		<element name="Manganese" formula="Mn" Z="25.">
+			<atom unit="g/mole" value="54.94"/>
+		</element>
+		<element name="Iron" formula="Fe" Z="26.">
+			<atom unit="g/mole" value="55.845"/>
+		</element>
+		<element name="Cobalt" formula="Co" Z="27.">
+			<atom unit="g/mole" value="58.933"/>
+		</element>
+		<element name="Nickel" formula="Ni" Z="28.">
+			<atom unit="g/mole" value="58.693"/>
+		</element>
+		<element name="Copper" formula="Cu" Z="29.">
+			<atom unit="g/mole" value="63.546"/>
+		</element>
+		<element name="Bromine" formula="Br" Z="35.">
+			<atom unit="g/mole" value="79.904"/>
+		</element>
+		<element name="Zirconium" formula="Zr" Z="40.">
+			<atom unit="g/mole" value="91.22"/>
+		</element>
+		<element name="Molybdenum" formula="Mo" Z="42.">
+			<atom unit="g/mole" value="95.94"/>
+		</element>
+		<element name="Yttrium" formula="Y" Z="39.">
+			<atom unit="g/mole" value="88.91"/>
+		</element>
+		<element name="Iodine" formula="I" Z="53.">
+			<atom unit="g/mole" value="126.90"/>
+		</element>
+		<element name="Xenon" formula="Xe" Z="54.">
+			<atom unit="g/mole" value="131.29"/>
+		</element>
+		<element name="Lanthanum" formula="La" Z="57.">
+			<atom unit="g/mole" value="138.9055"/>
+		</element>
+		<element name="Cerium" formula="Ce" Z="58.">
+			<atom unit="g/mole" value="140.12"/>
+		</element>
+		<element name="Lutetium" formula="Lu" Z="71.">
+			<atom unit="g/mole" value="174.97"/>
+		</element>
+		<element name="Tungsten" formula="W" Z="74.">
+			<atom unit="g/mole" value="183.850"/>
+		</element>
+		<element name="Lead" formula="Pb" Z="82.">
+			<atom unit="g/mole" value="207.0"/>
+		</element>
+		<material name="Vacuum" Z="1">
+		<D unit="g/cm3" value="9.9999999999999998e-17" />
+		<atom unit="g/mole" value="1.008" />
+		</material>
+		<material Z="10" name="Neon" state="gas">
+			<D unit="mg/cm3" value="0.839"/>
+			<atom unit="g/mole" value="20.18"/>
+		</material>
+		<material name="DME" state="gas">
+			<D unit="g/cm3" value="0.00191855"/>
+			<composite n="6" ref="Hydrogen"/>
+			<composite n="2" ref="Carbon"/>
+			<composite n="1" ref="Oxygen"/>
+		</material>
+		<material name="ceramics" state="solid">
+			<D unit="g/cm3" value="2.88"/>
+			<composite n="2" ref="Aluminum"/>
+			<composite n="3" ref="Oxygen"/>
+		</material>
+		<material name="Kovar">
+			<D unit="g/cm3" value="8.17"/>
+			<fraction n="0.29" ref="Nickel"/>
+			<fraction n="0.17" ref="Cobalt"/>
+			<fraction n="0.005" ref="Manganese"/>
+			<fraction n="0.002" ref="Silicon"/>
+			<fraction n="0.00025" ref="Sulfur"/>
+			<fraction n="0.002" ref="Chrome"/>
+			<fraction n="0.002" ref="Copper"/>
+			<fraction n="0.002" ref="Molybdenum"/>
+			<fraction n="0.001" ref="Zirconium"/>
+			<fraction n="0.00025" ref="Phosphorus"/>
+			<fraction n="0.0006" ref="Carbon"/>
+			<fraction n="0.5249" ref="Iron"/>
+		</material>
+		<material Z="4" name="Beryllium" state="solid">
+			<D unit="g/cm3" value="1.848"/>
+			<atom unit="g/mole" value="9.01"/>
+		</material>
+		<material name="SSteel">
+			<D unit="g/cm3" value="7.7"/>
+			<fraction n="0.88" ref="Iron"/>
+			<fraction n="0.08" ref="Cobalt"/>
+			<fraction n="0.04" ref="Carbon"/>
+		</material>
+		<material name="Scintillator" state="solid">
+			<D unit="g/cm3" value="1.190"/>
+			<composite n="8" ref="Hydrogen"/>
+			<composite n="5" ref="Carbon"/>
+			<composite n="2" ref="Oxygen"/>
+		</material>
+		<material Z="13" name="Aluminium" state="solid">
+			<D unit="g/cm3" value="2.7"/>
+			<atom unit="g/mole" value="26.98"/>
+		</material>
+		<material name="Ne_50_DME_50">
+			<D unit="g/cm3" value="0.00136822"/>
+			<fraction n="0.5" ref="Neon"/>
+			<fraction n="0.5" ref="DME"/>
+		</material>
+		<material name="Ne_70_DME_30">
+			<D unit="g/cm3" value="0.00116286"/>
+			<fraction n="0.3" ref="Neon"/>
+			<fraction n="0.7" ref="DME"/>
+		</material>
+		<!-- 80kpa -->
+		<material name="Ne_30_DME_70">
+			<D unit="g/cm3" value="0.00122170"/>
+			<fraction n="0.3" ref="Neon"/>
+			<fraction n="0.7" ref="DME"/>
+		</material>
+		<material Z="82" name="Lead" state="solid">
+			<D unit="g/cm3" value="11.35"/>
+			<atom unit="g/mole" value="207.19"/>
+		</material>
+		<material name="lead_glass">
+			<D unit="g/cm3" value="6.2"/>
+			<fraction n="0.659" ref="Pb"/>
+			<fraction n="0.126" ref="Si"/>
+			<fraction n="0.0166" ref="K"/>
+			<fraction n="0.1984" ref="O"/>
+		</material>
+		<material name="matSilicon">
+			<D value="2.33" />
+			<composite n="1" ref="Silicon" />
+		</material>
+		
+		
+		
+		<material Z="24" name="Chromium" state="solid">
+			<D unit="g/cm3" value="7.19"/>
+			<atom unit="g/mole" value="52.00"/>
+		</material>
+		<material Z="26" name="Iron" state="solid">
+			<D unit="g/cm3" value="7.874"/>
+			<atom unit="g/mole" value="55.85"/>
+		</material>
+		<material Z="28" name="Nickel" state="solid">
+			<D unit="g/cm3" value="8.908"/>
+			<atom unit="g/mole" value="58.69"/>
+		</material>
+		<material Z="29" name="Copper" state="solid">
+			<D unit="g/cm3" value="8.96"/>
+			<atom unit="g/mole" value="63.55"/>
+		</material>
+		<material Z="54." name="Xenon" state="gas">
+			<D unit="mg/cm3" value="5.858"/>
+			<atom unit="g/mole" value="131.3"/>
+		</material>
+		<material name="kapton" formula="C22H10O5N2" state="solid">
+			<D unit="g/cm3" value="1.413"/>
+			<composite n="22" ref="Carbon"/>
+			<composite n="10" ref="Hydrogen"/>
+			<composite n="5" ref="Oxygen"/>
+			<composite n="2" ref="Nitrogen"/>
+		</material>
+		<material name="PP" formula="C2H4" state="solid">
+			<D unit="g/cm3" value="0.9"/>
+			<composite n="2" ref="Carbon"/>
+			<composite n="4" ref="Hydrogen"/>
+		</material>
+		<material name="carbondioxide" formula="CO2" state="gas">
+			<D unit="mg/cm3" value="1.980"/>
+			<composite n="1" ref="Carbon"/>
+			<composite n="2" ref="Oxygen"/>
+		</material>
+		<material name="ceram" formula="Al2O3" state="solid">
+			<D unit="g/cm3" value="3.6"/>
+			<composite n="2" ref="Aluminum"/>
+			<composite n="3" ref="Oxygen"/>
+		</material>
+		<material name="Xe10CO2" state="gas">
+			<D unit="mg/cm3" value="4.921"/>
+			<fraction n="0.9" ref="Xenon"/>
+			<fraction n="0.1" ref="carbondioxide"/>
+		</material>
+		<material name="SUS">
+			<D unit="g/cm3" value="8.0"/>
+			<fraction n="0.74" ref="Iron"/>
+			<fraction n="0.18" ref="Chromium"/>
+			<fraction n="0.08" ref="Nickel"/>
+		</material>
+	</materials>
+	
+	<solids>
+		<box lunit="mm" name="solidWorld" x="8000" y="8000" z="8000"/> <!-- World. -->
+		<box lunit="mm" name="solidDetector" x="40" y="40" z="21"/> <!-- Detector unit. -->
+		<box lunit="mm" name="solidScintillator" x="46" y="84" z="15"/> <!-- The Scintillator. -->
+		<box lunit="mm" name="solidScintillator1" x="46" y="84" z="15"/> <!-- The Scintillator1. -->
+		<tube lunit="mm" aunit="deg" name="solidScintillator1_hole" z="15" rmin="0" rmax="5" deltaphi="360"/> 
+		<box lunit="mm" name="solidScintillator2" x="46" y="84" z="15"/> <!-- The Scintillator2. -->
+		<tube lunit="mm" aunit="deg" name="solidScintillator2_hole" z="15" rmin="0" rmax="5" deltaphi="360"/> 
+		<tube lunit="mm" aunit="deg" name="solidSSteel" z="3.1" rmin="5" rmax="19" deltaphi="360"/> <!--Top_Stainless Steel.-->
+		<tube lunit="mm" aunit="deg" name="solidBeWindow" z="0.1" rmin="0" rmax="5" deltaphi="360"/> <!--Be Window.-->
+		<tube lunit="mm" aunit="deg" name="solidCeramics" z="14.51" rmin="0" rmax="15.25" deltaphi="360"/> <!--Ceramic shell.-->
+		<tube lunit="mm" aunit="deg" name="solidGas" z="14.51" rmin="0" rmax="13.75" deltaphi="360"/> <!--Gas.-->
+		<box lunit="mm" name="solidGasSD" x="6" y="6" z="14.11"/> <!-- The GasSD. -->
+		<box lunit="mm" name="solidlead_glassFrame" x="6.05" y="6.05" z="0.398"/> <!-- The lead_glassFrame. -->
+		<box lunit="mm" name="solidCopper_glassFrame" x="6.05" y="6.05" z="0.001"/> <!-- The copper on the glass frame. -->
+		<tube lunit="mm" aunit="deg" name="solidKovar" z="3" rmin="0" rmax="20" deltaphi="360"/> <!--Bottom kovar.-->
+		<box lunit="mm" name="solidshield1" x="4" y="84" z="50"/> <!-- The shield1. -->
+		<box lunit="mm" name="solidshield2" x="100" y="4" z="50"/> <!-- The shield2. -->
+		<box lunit="mm" name="solidshield_bottom" x="100" y="92" z="4"/> <!-- The shield_bottom. -->
+	</solids>
+	
+	<structure>
+		<volume name="shield_bottom"><!-- shield_bottom. -->
+			<materialref ref="Aluminium"/>
+			<solidref ref="solidshield_bottom"/>
+		</volume>
+		<volume name="shield1"><!-- shield1. -->
+			<materialref ref="Aluminium"/>
+			<solidref ref="solidshield1"/>
+		</volume>
+		<volume name="shield2"><!-- shield2. -->
+			<materialref ref="Aluminium"/>
+			<solidref ref="solidshield2"/>
+		</volume>
+		<volume name="Kovar"><!-- Bottom Kovar. -->
+			<materialref ref="Kovar"/>
+			<solidref ref="solidKovar"/>
+		</volume>
+		<volume name="lead_glassFrame"><!-- GMCP. -->
+			<materialref ref="lead_glass"/>
+			<solidref ref="solidlead_glassFrame"/>
+		</volume>
+		<volume name="copper_glassFrame"><!-- GMCP. -->
+			<materialref ref="Copper"/>
+			<solidref ref="solidCopper_glassFrame"/>
+		</volume>
+		<volume name="GasSD">
+			<materialref ref="Ne_70_DME_30"/>
+			<solidref ref="solidGasSD"/>
+			<auxiliary auxtype="SensDet" auxvalue="GasSD"/>
+		</volume>
+		<volume name="Gas">
+			<materialref ref="Ne_30_DME_70"/>
+			<solidref ref="solidGas"/>
+			<physvol name="GasSDPhys">
+				<volumeref ref="GasSD"/>
+				<position name="posGasSD" x="0" y="0" z="0.2" unit="mm"/>
+			</physvol>
+			<physvol name="lead_glassFramePhys">
+				<volumeref ref="lead_glassFrame"/>
+				<position name="poslead_glassFrame" x="0" y="0" z="-7.055" unit="mm"/>
+			</physvol>
+			<physvol name="copper_glassFramePhys">
+				<volumeref ref="copper_glassFrame"/>
+				<position name="posCopper_glassFrame" x="0" y="0" z="-6.8555" unit="mm"/>
+			</physvol>
+			<physvol name="copper_glassFramePhys2">
+				<volumeref ref="copper_glassFrame"/>
+				<position name="posCopper_glassFrame" x="0" y="0" z="-7.2545" unit="mm"/>
+			</physvol>
+		</volume>
+		<volume name="Ceramics">
+			<materialref ref="ceramics"/>
+			<solidref ref="solidCeramics"/>
+			<physvol name="GasPhys">
+				<volumeref ref="Gas"/>
+				<position name="posGas" x="0" y="0" z="0" unit="mm"/>
+			</physvol>
+		</volume>
+		<volume name="BeWindow">
+			<materialref ref="Beryllium"/>
+			<solidref ref="solidBeWindow"/>
+			<auxiliary auxtype="SensDet" auxvalue="BeWindowSD"/>
+		</volume>
+	        <volume name="SSteel">
+			<materialref ref="SSteel"/>
+			<solidref ref="solidSSteel"/>
+		</volume>
+		<volume name="Scintillator1_hole">
+			<materialref ref="Vacuum"/>
+			<solidref ref="solidScintillator1_hole"/>
+		</volume>
+		<volume name="Scintillator1">
+			<materialref ref="Scintillator"/>
+			<solidref ref="solidScintillator"/>
+			<physvol name="Scintillator1_holePhys">
+				<volumeref ref="Scintillator1_hole"/>
+				<position name="posScintillator1_hole" x="1" y="0" z="0" unit="mm"/>
+			</physvol>
+		</volume>
+		<volume name="Scintillator2_hole">
+			<materialref ref="Vacuum"/>
+			<solidref ref="solidScintillator2_hole"/>
+		</volume>
+		<volume name="Scintillator2">
+			<materialref ref="Scintillator"/>
+			<solidref ref="solidScintillator2"/>
+			<physvol name="Scintillator2_holePhys">
+				<volumeref ref="Scintillator2_hole"/>
+				<position name="posScintillator2_hole" x="1" y="0" z="0" unit="mm"/>
+			</physvol>
+		</volume>
+		
+			
+		<volume name="Detector">
+			<materialref ref="Vacuum"/>
+			<solidref ref="solidDetector"/>
+			<physvol name="SSteelPhys">
+				<volumeref ref="SSteel"/>
+				<position name="posSSteel" x="0" y="0" z="8.775" unit="mm"/>
+			</physvol>
+			<physvol name="BeWindowPhys">
+				<volumeref ref="BeWindow"/>
+				<position name="posBeWindow" x="0" y="0" z="7.26" unit="mm"/>
+			</physvol>
+			<physvol name="CeramicsPhys">
+				<volumeref ref="Ceramics"/>
+				<position name="posCeramics" x="0" y="0" z="0" unit="mm"/>
+			</physvol>
+			<physvol name="KovarPhys">
+				<volumeref ref="Kovar"/>
+				<position name="posKovar" x="0" y="0" z="-8.5" unit="mm"/>
+			</physvol>
+		</volume>
+		<volume name="World">
+			<materialref ref="Vacuum"/>
+			<solidref ref="solidWorld"/>
+			<physvol name="DetectorPhys0">
+				<volumeref ref="Detector"/>
+				<position name="posDetector0" x="0" y="0" z="0" unit="mm"/>
+			</physvol>
+			<physvol name="DetectorPhys1">
+				<volumeref ref="Detector"/>
+				<position name="posDetector1" x="44" y="0" z="0" unit="mm"/>
+			</physvol>
+			<physvol name="Scintillator1Phys">
+				<volumeref ref="Scintillator1"/>
+				<position name="posScintillator1" x="-1" y="0" z="37.6" unit="mm"/>
+			</physvol>
+			<physvol name="Scintillator1Phys_copy">
+				<volumeref ref="Scintillator1"/>
+				<position name="posScintillator1_copy" x="45" y="0" z="37.6" unit="mm"/>
+				<rotation x="0" y="0." z="180" unit="deg" />
+			</physvol>
+			<physvol name="Scintillator2Phys">
+				<volumeref ref="Scintillator2"/>
+				<position name="posScintillator2" x="-1" y="0" z="22.6" unit="mm"/>
+			</physvol>
+			<physvol name="Scintillator2Phys_copy">
+				<volumeref ref="Scintillator2"/>
+				<position name="posScintillator2_copy" x="45" y="0" z="22.6" unit="mm"/>
+				<rotation x="0" y="0." z="180" unit="deg" />
+			</physvol>
+			<physvol name="shield1Phys">
+				<volumeref ref="shield1"/>
+				<position name="posshield1" x="-26" y="0" z="10" unit="mm"/>
+			</physvol>
+			<physvol name="shield1Phys_copy">
+				<volumeref ref="shield1"/>
+				<position name="posshield1_copy" x="70" y="0" z="10" unit="mm"/>
+			</physvol>
+			<physvol name="shield2Phys">
+				<volumeref ref="shield2"/>
+				<position name="posshield2" x="22" y="44" z="10" unit="mm"/>
+			</physvol>
+			<physvol name="shield2Phys_copy">
+				<volumeref ref="shield2"/>
+				<position name="posshield2_copy" x="22" y="-44" z="10" unit="mm"/>
+			</physvol>
+			<physvol name="shield_bottomPhys">
+				<volumeref ref="shield_bottom"/>
+				<position name="posshield_bottom" x="22" y="0" z="-17" unit="mm"/>
+			</physvol>
+		</volume>
+		
+		
+	</structure>
+	
+	<setup name="Default" version="1.0">
+		<world ref="World"/>
+	</setup>
+</gdml>

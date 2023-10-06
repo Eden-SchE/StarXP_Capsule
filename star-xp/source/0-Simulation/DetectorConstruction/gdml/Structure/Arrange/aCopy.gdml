@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!-- 
+       EMCal.gdml
+    包含: 一般材料的定义
+    包含: CsI阵列
+    包含: Region的定义及cut
+    包含: 探测器的颜色显示控制
+-->
+
+<!DOCTYPE gdml [
+    <!ENTITY Element SYSTEM "./Material/Predefined/Element.xml">
+    <!ENTITY Materials SYSTEM "./Material/Material.xml">
+]>
+
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+    <!--materials-->
+    &Element;
+    &Materials;
+    <define>
+        <variable name="nX" value="1" />
+        <variable name="nY" value="1" />
+
+        <variable name="X" value="500" />
+        <variable name="Y" value="500" />
+        <variable name="Z" value="500" />
+    </define>
+
+    <solids>
+        <box lunit="mm" name="WorldBox" x="10000" y="10000" z="10000" />
+        <box lunit="mm" name="CsIHolderX" x="nX*X" y="Y" z="Z" />
+        <box lunit="mm" name="CsIHolderXY" x="nX*X" y="nY*Y" z="Z" />
+        <tube lunit="mm" name="CsIBox" rmax="250." z="408" deltaphi="360" />
+    </solids>
+
+    <structure>
+        <volume name="CsILog">
+            <materialref ref="N2Gas" />
+            <solidref ref="CsIBox" />
+        </volume>
+
+        <volume name="World">
+            <materialref ref="G4_AIR" />
+            <solidref ref="WorldBox" />
+
+            <physvol>
+                <volumeref ref="CsILog" />
+                <position x="0." y="0." z="0." unit="mm" />
+                <rotation x="0." y="0." z="0." unit="deg" />
+            </physvol>
+
+        </volume>
+    </structure>
+
+    <userinfo>
+        <auxiliary auxtype="PrimaryGen" auxvalue="GPS">
+            <auxiliary auxtype="particle" auxvalue="mu-" />
+        </auxiliary>
+    </userinfo>
+
+    <setup name="Default" version="1.0">
+        <world ref="World" />
+    </setup>
+</gdml>

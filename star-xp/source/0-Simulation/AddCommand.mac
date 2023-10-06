@@ -1,0 +1,5 @@
+/process/em/auger true
+/process/em/fluo true
+/process/em/pixe true
+/process/em/augerCascade true
+/process/em/deexcitationIgnoreCut true

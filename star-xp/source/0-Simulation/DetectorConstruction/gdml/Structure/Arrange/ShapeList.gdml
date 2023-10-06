@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+	<!-- 练习使用XML来定义几何体 -->
+    <!-- #VisCtrl 1.0 在XML里定义几何体 -->
+    <solids>
+		<box name="worldBox" x="1000" y="1000" z="1000" lunit="mm" />
+		<box name="thebox" x="30" y="30" z="30" lunit="mm" />
+		<cone name="thecone" rmin1="10" rmax1="15" rmin2="15" rmax2="25" z="30" startphi="1" deltaphi="4" aunit="rad" lunit="mm" />
+		<ellipsoid name="theellipsoid" ax="10" by="15" cz="20" zcut2="5" lunit="mm" />
+		<eltube name="theeltube" dx="10" dy="15" dz="20" lunit="mm" />
+		<elcone name="theelcone" dx="1" dy="1.5" zmax="2" zcut="1.5" lunit="mm" />
+		<orb name="theorb" r="10" lunit="mm" />
+		<paraboloid name="theparab" rlo="10" rhi="15" dz="20" aunit="rad" lunit="mm" />
+		<para name="thepara" x="10" y="10" z="10" alpha="1" theta="1" phi="1" aunit="rad" lunit="mm" />
+		<polycone name="thepolycone1" startphi="1" deltaphi="4" aunit="rad" lunit="mm">
+			<zplane rmin="1" rmax="9" z="10" />
+			<zplane rmin="3" rmax="5" z="12" />
+		</polycone>
+		<genericPolycone name="thepolycone2" startphi="1" deltaphi="4" aunit="rad" lunit="mm">
+			<rzpoint r="1" z="5" />
+			<rzpoint r="3" z="10" />
+			<rzpoint r="1" z="12" />
+		</genericPolycone>
+		<polyhedra name="thepolyhedra1" startphi="1" deltaphi="4" numsides="10" aunit="rad" lunit="mm">
+			<zplane rmin="1" rmax="9" z="10" />
+			<zplane rmin="3" rmax="5" z="12" />
+		</polyhedra>
+		<genericPolyhedra name="thepolyhedra2" startphi="1" deltaphi="4" numsides="10" aunit="rad" lunit="mm">
+			<rzpoint r="1" z="10" />
+			<rzpoint r="3" z="12" />
+			<rzpoint r="1" z="12" />
+		</genericPolyhedra>
+		<sphere name="thesphere" rmin="1" rmax="4" deltaphi="1" deltatheta="1" aunit="rad" lunit="mm" />
+		<torus name="thetorus" rmin="1" rmax="80" rtor="100" deltaphi="0.7" startphi="1.7" aunit="rad" lunit="mm" />
+		<trd name="thetrd" x1="9" x2="8" y1="6" y2="5" z="10" lunit="mm" />
+		<trap name="thetrap" z="10" theta="1" phi="2" y1="15" x1="10" x2="10" alpha1="1" y2="15" x3="10" x4="10" alpha2="1" aunit="rad" lunit="mm" />
+		<hype name="thehype" rmin="1" rmax="2" z="20" inst="3" outst="4" lunit="mm" />
+		<cutTube name="thecuttube" z="20" rmin="1" rmax="5" startphi="1" deltaphi="4" lowX="15" lowY="15" lowZ="-10" highX="10" highY="10" highZ="10" aunit="rad" lunit="mm" />
+		<tube name="thetube" rmin="1" rmax="4" z="20" deltaphi="3" startphi="1" aunit="rad" lunit="mm" />
+		<twistedbox name="twistbox" PhiTwist="1" x="30" y="30" z="30" aunit="rad" lunit="mm" />
+		<twistedtrd name="twisttrd" PhiTwist="1" x1="9" x2="8" y1="6" y2="5" z="10" aunit="rad" lunit="mm" />
+		<twistedtrap name="twisttrap" PhiTwist="1" z="10" Theta="1" Phi="2" y1="15" x1="10" x2="10" y2="15" x3="10" x4="10" Alph="1" aunit="rad" lunit="mm" />
+		<twistedtubs name="twisttube" endinnerrad="1" endouterrad="4" zlen="20" phi="3" twistedangle="1" aunit="rad" lunit="mm" />
+		<xtru name="theXtru" lunit="mm">
+			<twoDimVertex x="3" y="9" />
+			<twoDimVertex x="1" y="5" />
+			<twoDimVertex x="2" y="4" />
+			<section zOrder="1" zPosition="2" xOffset="5" yOffset="3" scalingFactor="3" />
+			<section zOrder="2" zPosition="5" xOffset="3" yOffset="5" scalingFactor="1" />
+		</xtru>
+		<arb8 name="thearb8" v1x="0" v1y="0" v2x="5" v2y="0" v3x="4" v3y="4" v4x="1" v4y="4" v5x="10" v5y="10" v6x="15" v6y="9" v7x="16" v7y="16" v8x="9" v8y="13" dz="20" lunit="mm" />
+	</solids>
+
+	<structure>
+		<volume name="theboxVol">
+			<materialref ref="G4_AIR" />
+            <solidref ref="thebox" />
+            <!-- #VisCtrl 1.1 在XML里控制几何体的颜色 -->
+			<auxiliary auxtype="setColor" auxvalue="kRed" auxunit="-2" />
+            <auxiliary auxtype="setAlpha" auxvalue="1.0" />
+		</volume>
+
+		<volume name="theconeVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="thecone" />
+			<auxiliary auxtype="setColor" auxvalue="kBlue" auxunit="3" />
+            <auxiliary auxtype="setAlpha" auxvalue="1.0" />
+		</volume>
+
+		<volume name="theellipsoidVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="theellipsoid" />
+			<auxiliary auxtype="setColor" auxvalue="kYellow" auxunit="2" />
+            <auxiliary auxtype="setAlpha" auxvalue="1.0" />
+		</volume>
+
+		<volume name="theeltubeVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="theeltube" />
+		</volume>
+
+		<volume name="theelconeVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="theelcone" />
+		</volume>
+
+		<volume name="theorbVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="theorb" />
+		</volume>
+
+		<volume name="theparaVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="thepara" />
+		</volume>
+
+		<volume name="thepolycone1Vol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="thepolycone1" />
+		</volume>
+
+		<volume name="thepolycone2Vol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="thepolycone2" />
+		</volume>
+
+		<volume name="thepolyhedra1Vol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="thepolyhedra1" />
+		</volume>
+
+		<volume name="thepolyhedra2Vol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="thepolyhedra2" />
+		</volume>
+
+		<volume name="thesphereVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="thesphere" />
+		</volume>
+
+		<volume name="thetorusVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="thetorus" />
+		</volume>
+
+		<volume name="thetrdVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="thetrd" />
+		</volume>
+
+		<volume name="thetrapVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="thetrap" />
+		</volume>
+
+		<volume name="thehypeVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="thehype" />
+		</volume>
+
+		<volume name="thecuttubeVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="thecuttube" />
+		</volume>
+
+		<volume name="thetubeVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="thetube" />
+		</volume>
+
+		<volume name="twistboxVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="twistbox" />
+		</volume>
+
+		<volume name="twisttrdVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="twisttrd" />
+		</volume>
+
+		<volume name="twisttrapVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="twisttrap" />
+		</volume>
+
+		<volume name="twisttubeVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="twisttube" />
+		</volume>
+
+		<volume name="theXtruVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="theXtru" />
+		</volume>
+
+		<volume name="thearb8Vol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="thearb8" />
+		</volume>
+
+		<volume name="worldVol">
+			<materialref ref="G4_AIR" />
+			<solidref ref="worldBox" />
+			<physvol>
+				<volumeref ref="theboxVol" />
+				<position x="-250" y="-250" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="theconeVol" />
+				<position x="-150" y="-250" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="theellipsoidVol" />
+				<position x="-50" y="-250" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="theeltubeVol" />
+				<position x="50" y="-250" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="theelconeVol" />
+				<position x="150" y="-250" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="theorbVol" />
+				<position x="-250" y="-150" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="theparaVol" />
+				<position x="-150" y="-150" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="thepolycone1Vol" />
+				<position x="-50" y="-150" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="thepolycone2Vol" />
+				<position x="50" y="-150" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="thepolyhedra1Vol" />
+				<position x="150" y="-150" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="thepolyhedra2Vol" />
+				<position x="-250" y="-50" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="thesphereVol" />
+				<position x="-150" y="-50" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="thetorusVol" />
+				<position x="-50" y="-50" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="thetrdVol" />
+				<position x="50" y="-50" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="thetrapVol" />
+				<position x="150" y="-50" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="thehypeVol" />
+				<position x="-250" y="50" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="thecuttubeVol" />
+				<position x="-150" y="50" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="thetubeVol" />
+				<position x="-50" y="50" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="twistboxVol" />
+				<position x="50" y="50" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="twisttrdVol" />
+				<position x="150" y="50" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="twisttrapVol" />
+				<position x="-250" y="150" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="twisttubeVol" />
+				<position x="-150" y="150" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="theXtruVol" />
+				<position x="-50" y="150" z="0" unit="mm" />
+			</physvol>
+			<physvol>
+				<volumeref ref="thearb8Vol" />
+				<position x="50" y="150" z="0" unit="mm" />
+			</physvol>
+		</volume>
+
+	</structure>
+
+	<setup version="1.0" name="Default">
+		<world ref="worldVol" />
+	</setup>
+
+</gdml>

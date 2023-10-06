@@ -1,0 +1,52 @@
+DetectorGDML: ../../../source/0-Simulation/DetectorConstruction/gdml/CubeSat_det_v03.xml
+#DetectorGDML: ../../../source/0-Simulation/DetectorConstruction/gdml/CoinSys.gdml
+
+OutputFile: sim_rot_-.root
+AdditionalMACCommand: AddCommand.mac
+
+#PGType: GRB
+#PGParameters:GRB 111228A,0.,0.,1.,1.,0.,0.,1.,0.,0.
+#GRB No.,theta,phi,Polarization degree,Phrase,StokesParameters
+#GenTime:500
+
+#PGType: CXB
+#GenTime:500
+#PGParameters:0.002,2.
+#OnlySaveValidEvent: 1
+
+#PGType: PCRE
+#GenTime: 500
+#PGParameters:5000,100000,250,500,0.3
+
+#PGType: SPP
+#GenTime: 500
+#PGParameters:10.,1000,0.3,1
+
+#PGType: SPE
+#GenTime: 500
+#PGParameters:10,1000,0.3
+
+#PGType: AAP
+#GenTime: 500
+#PGParameters:0.003,0.3,0.25,0.2
+
+
+#PGType: PCRP
+#GenTime: 50000
+#PGParameters:5000,100000,250,500,0.3
+
+
+
+PGType: Simple
+PGName: gamma
+PGEnergy: 0.01
+PGPos: 0.0,0.0,300.0
+PGPol: 1.0,0.,0.
+IsStokes: yes
+StokesParameters:-1.0,0.,0.
+ParticlePolarizationFactor:1.
+PGMomDir: 0.0,0.0,-1.0
+GenValidEvents: 10000
+IsArea: no
+IsRandSphere: no
+RandParameters:8,8,0

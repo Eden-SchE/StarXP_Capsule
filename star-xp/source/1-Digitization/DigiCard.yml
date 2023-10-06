@@ -1,0 +1,58 @@
+Mode: SingleParticle
+RandomTime: true
+
+RandomSeed: 2022
+Verbose: 0
+ExitTime: -1.
+ExitEvents: -1
+SaveAllFrame: false
+GMCPOutput: false
+DropAllMCPPol: false
+
+Input:
+  Files:
+    [~/StarXP/testSamples/data/simu/sim_8keV.root]
+  TimeShift: [0.] #s
+
+Output:
+  FileName: digi.root
+  Verbose: 1
+  TotalTruth: false
+
+Filter:
+  Type: DiffFilter
+  Config:
+    ThresholdV: 10
+    ThresholdN: 10
+
+Detector:
+  NumOfFramePerEvent: 1
+  Default:
+    # Gas
+    GasCalib: CalibFiles/Ne_70_DME_30.yml
+    # GMCP for TopMetal
+    GMCPMultipleFactor: 2000.
+    GMCPEToHoleEfficiency: 0.6
+    GMCPHoleDistance: 0.060   #mm
+    GMCPHoleDiameter: 0.050   #mm
+    # TopMetal
+    GMCPTopMetalDistance: 3.39   #mm
+    PixelSize: 0.080  #mm
+    PixelTime: 640    #ns
+    NumOfPixelX: 72
+    NumOfPixelY: 72
+    ADCResponse: 0.2
+    TopMetalCalib: CalibFiles/pededata.root
+    #TopMetalCalib: {mean: 1200., sigma: 0.0001, a: 360., b: -0.5, c: 100.}   # Const Calib Factors
+
+    # GPCM Output
+    GMCP:
+      Tau: 200
+      Smear: 20
+      Shift: 0
+      Response: 0.01
+      TimeWindow: 5000
+      FlashTime: 200
+      Threshold: 50
+  Detector_0: {}
+  Detector_1: {}

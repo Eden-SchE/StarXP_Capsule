@@ -1,0 +1,17 @@
+
+Useage:
+1) Generate G4 simulation data -> Digitization using Calibration Data(auto.) -> Perform Reconstruction -> Analyze the rec results
+
+2) Real detector data -> Perform reconstruction w/wo calibration(select.) -> Analyze the rec results
+
+
+
+Info:
+0-Simulation, G4 based simulation package, ".sroot" stands for simulation root file
+1-Reconstruction, recon with two different methode, ".rec" stands for rec root file
+2-Calibration, calibration package, readin real data and generate ".cal" for cal root file
+3-Analysis, ...
+4-EventDisplay, ...
+CommonLib, ...
+
+
